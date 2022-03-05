@@ -9,6 +9,8 @@ RUN apt-get update && \
     rm /tmp/cgate.zip && \
     rm /app/cgate/tag/* && \
     echo "remote 10.255.255.255 Program" >> /app/cgate/config/access.txt && \
+    # Disable blocking TLSv1, TLSv1.1 since Toolkit still uses it!
+    sed -E -i 's/jdk.tls.disabledAlgorithms=(.*?)TLSv1, TLSv1.1, (.*?)/jdk.tls.disabledAlgorithms=\1\2/' /usr/local/openjdk-8/jre/lib/security/java.security && \ 
     apt-get remove -y wget unzip && \
     apt-get purge && \
     apt-get clean autoclean && \
