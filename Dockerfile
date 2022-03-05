@@ -1,0 +1,13 @@
+FROM openjdk:19-alpine3.15
+
+RUN mkdir /app
+WORKDIR /app
+RUN wget https://updates.clipsal.com/ClipsalSoftwareDownload/mainsite/cis/technical/CGate/cgate-2.11.4_3251.zip -O /tmp/cgate.zip && \
+    unzip /tmp/cgate.zip && \
+    rm /tmp/cgate.zip && \
+    rm /app/cgate/tag/* && \
+    ls /app/cgate -al
+
+WORKDIR /app/cgate
+
+CMD ["java","-Djava.library.path=.","-jar","cgate.jar"]
