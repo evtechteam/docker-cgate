@@ -1,5 +1,6 @@
 FROM openjdk:8u342-slim-bullseye
 
+
 RUN mkdir /app
 WORKDIR /app
 RUN apt-get update && \
