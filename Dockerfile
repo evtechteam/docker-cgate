@@ -1,4 +1,4 @@
-FROM openjdk:8u322-slim-bullseye
+FROM openjdk:8u342-slim-bullseye
 
 RUN mkdir /app
 WORKDIR /app
